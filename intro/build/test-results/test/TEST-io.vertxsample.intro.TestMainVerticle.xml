@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="io.vertxsample.intro.TestMainVerticle" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-06-01T09:07:55" hostname="Maheshs-MacBook-Pro.local" time="5.288">
+  <properties/>
+  <testcase name="verticle_deployed(Vertx, VertxTestContext)" classname="io.vertxsample.intro.TestMainVerticle" time="5.288"/>
+  <system-out><![CDATA[HTTP server started on port 8888
+]]></system-out>
+  <system-err><![CDATA[Jun 01, 2021 5:07:58 PM io.vertx.core.impl.BlockedThreadChecker
+WARNING: Thread Thread[vert.x-eventloop-thread-0,5,main] has been blocked for 2924 ms, time limit is 2000 ms
+Jun 01, 2021 5:07:59 PM io.vertx.core.impl.BlockedThreadChecker
+WARNING: Thread Thread[vert.x-eventloop-thread-0,5,main] has been blocked for 3928 ms, time limit is 2000 ms
+Jun 01, 2021 5:08:00 PM io.vertx.core.impl.BlockedThreadChecker
+WARNING: Thread Thread[vert.x-eventloop-thread-0,5,main] has been blocked for 4928 ms, time limit is 2000 ms
+]]></system-err>
+</testsuite>
