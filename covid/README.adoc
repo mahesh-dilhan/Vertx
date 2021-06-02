@@ -28,4 +28,8 @@ To run your application:
 * https://groups.google.com/forum/?fromgroups#!forum/vertx[Vert.x User Group]
 * https://gitter.im/eclipse-vertx/vertx-users[Vert.x Gitter]
 
+== Run cluster in console , first install vert.x
+```
+ HTTP_PORT="9997" vertx run -cp build/libs/covid-1.0.0-SNAPSHOT.jar io.mahesh.vertx.covid.CovidcasesCollector -cluster
 
+```
