@@ -11,10 +11,16 @@ public class MainVerticle  {
   private static final Logger logger = LoggerFactory.getLogger(MainVerticle.class);
 
   public static void main(String[] args) {
+    nonclusterdeploy();
+   // Vertx.clusteredVertx();
+
+  }
+
+  private static void nonclusterdeploy() {
     Vertx vertx = Vertx.vertx();
 
     DeploymentOptions dop = new DeploymentOptions()
-            .setInstances(4);
+            .setInstances(1);
     vertx.deployVerticle(CovidcasesCollector.class.getName(), dop, (event) -> {
       if (!event.failed()) {
           logger.info("started......");
@@ -22,5 +28,5 @@ public class MainVerticle  {
         event.cause().printStackTrace();
       }
     });
-    }
+  }
 }
