@@ -66,10 +66,21 @@ public class CovidcasesCollector extends AbstractVerticle {
 
   private void updateCountryStats(Long aLong) {
     int idx = randomcountry.nextInt(countries.size());
-    String cntry = countries.get(idx);
+    String name = countries.get(idx);
 
     int postivecases = randomcountry.nextInt(1000);
-    logger.info("Country {}  "+cntry+ "  stat update:{}" + postivecases);
-    data.put(cntry,new Country(cntry,postivecases));
+   // logger.info("Country {}  "+name+ "  stat update:{}" + postivecases);
+    Country cntry = new Country(name,postivecases);
+    data.put(name, cntry);
+    logger.info("{}",cntry.cases+"-"+cntry.name);
+    vertx.eventBus().publish("who.portal",payload(cntry));
   }
+
+  private JsonObject payload(Country cntry) {
+    return
+            new JsonObject()
+                    .put("name", cntry.name)
+                    .put("cases", cntry.cases);
+  }
+
 }

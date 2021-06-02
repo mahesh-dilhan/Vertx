@@ -2,6 +2,7 @@ package io.mahesh.vertx.covid;
 
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
+import io.vertx.core.json.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -23,6 +24,11 @@ public class MainVerticle {
       } else {
         event.cause().printStackTrace();
       }
+    });
+
+    vertx.eventBus()
+            .<JsonObject>consumer("who.portal", message ->{
+      logger.info("New Covid update....{}", message.body().encodePrettily());
     });
   }
 
