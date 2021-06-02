@@ -2,6 +2,7 @@ package io.mahesh.vertx.covid;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
@@ -17,7 +18,7 @@ public class CovidcasesCollector extends AbstractVerticle {
   private  List<String> countries = Arrays.asList("USA","SL","IND","PK","AUS");
   private final Random randomcountry = new Random();
 
-  private Map<String, Integer> data = new HashMap();
+  private Map<String, Country> data = new Hashtable<>();
 
 
   @Override
@@ -41,13 +42,26 @@ public class CovidcasesCollector extends AbstractVerticle {
     //startPromise.complete();
   }
 
+  class Country {
+    String name;
+    Integer cases;
+
+    public Country(String cntry, int postivecases) {
+      name = cntry;
+      cases = postivecases;
+    }
+  }
   private void list(RoutingContext routingContext) {
+    JsonArray list = new JsonArray();
     JsonObject  jsonObject = new JsonObject();
-    data.forEach((k, v) ->  jsonObject.put("country and cases:", "[Country]"+k+" [Cases]"+v));
+    data.forEach((k, v) ->  {
+      list.add(new JsonObject()
+      .put(k, v.cases).toString());
+    });
     routingContext.response()
             .putHeader("Content-Type","application/json")
             .setStatusCode(200)
-            .end(jsonObject.encode());
+            .end(new JsonObject().put("data",list).encode());
   }
 
   private void updateCountryStats(Long aLong) {
@@ -56,6 +70,6 @@ public class CovidcasesCollector extends AbstractVerticle {
 
     int postivecases = randomcountry.nextInt(1000);
     logger.info("Country {}  "+cntry+ "  stat update:{}" + postivecases);
-    data.put(cntry,postivecases);
+    data.put(cntry,new Country(cntry,postivecases));
   }
 }
