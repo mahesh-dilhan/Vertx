@@ -2,8 +2,8 @@ package io.mahesh.vertx.covid;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
-import io.vertx.core.impl.logging.Logger;
-import io.vertx.core.impl.logging.LoggerFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -12,6 +12,7 @@ import java.util.Random;
 public class CovidcasesCollector extends AbstractVerticle {
 
   private static final Logger logger = LoggerFactory.getLogger(CovidcasesCollector.class);
+
   private  List<String> countries = Arrays.asList("USA","SL","IND","PK","AUS");
   private final Random randomcountry = new Random();
 

@@ -1,32 +1,26 @@
 package io.mahesh.vertx.covid;
 
-import io.netty.channel.EventLoopGroup;
-import io.vertx.core.*;
-import io.vertx.core.datagram.DatagramSocket;
-import io.vertx.core.datagram.DatagramSocketOptions;
-import io.vertx.core.dns.DnsClient;
-import io.vertx.core.dns.DnsClientOptions;
-import io.vertx.core.eventbus.EventBus;
-import io.vertx.core.file.FileSystem;
-import io.vertx.core.http.HttpClient;
-import io.vertx.core.http.HttpClientOptions;
-import io.vertx.core.http.HttpServer;
-import io.vertx.core.http.HttpServerOptions;
-import io.vertx.core.net.NetClient;
-import io.vertx.core.net.NetClientOptions;
-import io.vertx.core.net.NetServer;
-import io.vertx.core.net.NetServerOptions;
-import io.vertx.core.shareddata.SharedData;
-import io.vertx.core.spi.VerticleFactory;
+import io.vertx.core.DeploymentOptions;
+import io.vertx.core.Vertx;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 
 public class MainVerticle  {
 
+  private static final Logger logger = LoggerFactory.getLogger(MainVerticle.class);
+
   public static void main(String[] args) {
     Vertx vertx = Vertx.vertx();
-    vertx.deployVerticle(new CovidcasesCollector());
+
+    DeploymentOptions dop = new DeploymentOptions()
+            .setInstances(4);
+    vertx.deployVerticle(CovidcasesCollector.class.getName(), dop, (event) -> {
+      if (!event.failed()) {
+          logger.info("started......");
+      } else {
+        event.cause().printStackTrace();
+      }
+    });
     }
 }
