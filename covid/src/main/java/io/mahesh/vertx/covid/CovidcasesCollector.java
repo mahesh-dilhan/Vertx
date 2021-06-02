@@ -14,7 +14,7 @@ import java.util.*;
 public class CovidcasesCollector extends AbstractVerticle {
 
   private static final Logger logger = LoggerFactory.getLogger(CovidcasesCollector.class);
-
+  private static final int PORT = Integer.parseInt(System.getenv().getOrDefault("HTTP_PORT","8888"));
   private  List<String> countries = Arrays.asList("USA","SL","IND","PK","AUS");
   private final Random randomcountry = new Random();
 
@@ -30,7 +30,7 @@ public class CovidcasesCollector extends AbstractVerticle {
 
     vertx.createHttpServer()
             .requestHandler(router)
-            .listen(8888)
+            .listen(PORT)
             .onSuccess(ok ->{
               logger.info("Running......server");
               startPromise.complete();

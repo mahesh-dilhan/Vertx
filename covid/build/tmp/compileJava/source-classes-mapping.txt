@@ -1,5 +1,5 @@
+io/mahesh/vertx/covid/MainVerticle.java
+ io.mahesh.vertx.covid.MainVerticle
 io/mahesh/vertx/covid/CovidcasesCollector.java
  io.mahesh.vertx.covid.CovidcasesCollector
  io.mahesh.vertx.covid.CovidcasesCollector$Country
-io/mahesh/vertx/covid/MainVerticle.java
- io.mahesh.vertx.covid.MainVerticle

@@ -33,7 +33,8 @@ dependencies {
   implementation("io.vertx:vertx-web")
   implementation("io.vertx:vertx-pg-client")
   testImplementation("io.vertx:vertx-junit5")
- // implementation ("org.slf4j:slf4j-log4j12:1.7.29")
+  implementation("io.vertx:vertx-hazelcast:4.1.0")
+  implementation ("org.slf4j:slf4j-log4j12:1.7.29")
   implementation("ch.qos.logback:logback-classic:1.2.3")
   testImplementation("org.junit.jupiter:junit-jupiter:$junitJupiterVersion")
 }
