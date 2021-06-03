@@ -1,1 +1,1 @@
-rootProject.name = "vertx-kube-cluster"
+rootProject.name = "fe"

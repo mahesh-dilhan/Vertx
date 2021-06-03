@@ -17,7 +17,7 @@ repositories {
 val vertxVersion = "4.1.0"
 val junitJupiterVersion = "5.7.0"
 
-val mainVerticleName = "io.mahesh.kubevertx.vertx_kube_cluster.MainVerticle"
+val mainVerticleName = "io.mahesh.kubevertx.be.MainVerticle"
 val launcherClassName = "io.vertx.core.Launcher"
 
 val watchForChange = "src/**/*"

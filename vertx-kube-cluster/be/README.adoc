@@ -1,4 +1,4 @@
-= Vertx-kube-cluster
+= Be
 
 image:https://img.shields.io/badge/vert.x-4.1.0-purple.svg[link="https://vertx.io"]
 

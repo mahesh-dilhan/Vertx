@@ -1,9 +1,9 @@
-package io.mahesh.kubevertx.vertx_kube_cluster;
+package io.mahesh.kubevertx.fe;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 
-public class MainVerticle extends AbstractVerticle {
+public class FrontendVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
@@ -11,7 +11,7 @@ public class MainVerticle extends AbstractVerticle {
       req.response()
         .putHeader("content-type", "text/plain")
         .end("Hello from Vert.x!");
-    }).listen(8888, http -> {
+    }).listen(9999, http -> {
       if (http.succeeded()) {
         startPromise.complete();
         System.out.println("HTTP server started on port 8888");

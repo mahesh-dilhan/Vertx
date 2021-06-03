@@ -1,9 +1,9 @@
-package io.mahesh.kubevertx.vertx_kube_cluster;
+package io.mahesh.kubevertx.be;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
 
-public class MainVerticle extends AbstractVerticle {
+public class BackendVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
