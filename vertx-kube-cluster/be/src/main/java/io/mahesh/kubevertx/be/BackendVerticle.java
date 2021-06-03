@@ -9,7 +9,7 @@ public class BackendVerticle extends AbstractVerticle {
   private static final Logger log = LoggerFactory.getLogger(BackendVerticle.class);
   private static final int HTTP_PORT = Integer.parseInt(System.getenv().getOrDefault("HTTP_PORT", "0"));
   private static final String POD_NAME = System.getenv().getOrDefault("POD_NAME", "unknown");
-  
+
   @Override
   public void start() {
     registerConsumer();
