@@ -5,6 +5,7 @@ plugins {
   java
   application
   id("com.github.johnrengelman.shadow") version "7.0.0"
+  id("com.google.cloud.tools.jib") version "3.0.0"
 }
 
 group = "io.mahesh.vertx"
@@ -62,4 +63,8 @@ tasks.withType<Test> {
 tasks.withType<JavaExec> {
   args = listOf("run", mainVerticleName, "--redeploy=$watchForChange", "--launcher-class=$launcherClassName", "--on-redeploy=$doOnChange")
   systemProperties["vertx.logger-delegate-factory-class-name"] = "io.vertx.core.logging.SLF4JLogDelegateFactory"
+}
+
+tasks.withType<jib> {
+  to.image = "gcr.io/REPLACE-WITH-YOUR-GCP-PROJECT/image-built-with-jib"
 }
