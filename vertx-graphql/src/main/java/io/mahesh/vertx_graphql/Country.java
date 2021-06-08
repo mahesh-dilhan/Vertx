@@ -9,7 +9,7 @@ public class Country {
   public boolean completed;
 
   public Country(String name) {
-    positiveCases = new Random().nextInt(1000);
+    positiveCases = new Random().nextInt(1000); // <1>
     this.name = name;
   }
 }

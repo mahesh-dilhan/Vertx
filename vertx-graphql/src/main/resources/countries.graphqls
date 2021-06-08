@@ -1,0 +1,13 @@
+type Country {
+  name: String
+  positiveCases: String
+  completed: Boolean
+}
+
+type Query {
+  allCountries(uncompletedOnly: Boolean = true): [Country]
+}
+
+type Mutation {
+  complete(name: String!): Boolean
+}
